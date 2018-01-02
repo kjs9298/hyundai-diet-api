@@ -9,6 +9,8 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
@@ -19,7 +21,8 @@ import java.util.*;
 
 @Service
 public class ExcelService {
-    private final String FILE_PATH = "src/main/appengine/20171106_menu.xls";
+    private static final Logger LOGGER = LoggerFactory.getLogger(ExcelService.class);
+    private final String FILE_PATH = "src/main/resources/20171106_menu.xls";
     private Map<String, Map<DietSubType, Diet>> dietMap;
 
     @PostConstruct
@@ -157,6 +160,8 @@ public class ExcelService {
             inputStream = new FileInputStream(filePath);
 
         } catch (FileNotFoundException e) {
+            String currentPath = System.getProperty("user.dir");
+            LOGGER.error("### Current path : " + currentPath);
             throw new RuntimeException(e.getMessage(), e);
 
         }
