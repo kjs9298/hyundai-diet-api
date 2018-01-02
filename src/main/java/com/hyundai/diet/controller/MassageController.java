@@ -7,7 +7,6 @@ import com.hyundai.diet.domain.MessageResponse;
 import com.hyundai.diet.enums.DietType;
 import com.hyundai.diet.enums.KeyboardType;
 import com.hyundai.diet.service.ExcelService;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
