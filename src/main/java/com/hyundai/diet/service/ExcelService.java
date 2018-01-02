@@ -19,7 +19,7 @@ import java.util.*;
 
 @Service
 public class ExcelService {
-    private final String FILE_PATH = "20171106_menu.xls";
+    private final String FILE_PATH = "src/main/appengine/20171106_menu.xls";
     private Map<String, Map<DietSubType, Diet>> dietMap;
 
     @PostConstruct
