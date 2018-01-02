@@ -9,25 +9,21 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.*;
 
 @Service
 public class ExcelService {
-    private static final Logger LOGGER = LoggerFactory.getLogger(ExcelService.class);
-    private final String FILE_PATH = "/home/kjs92980/hyundai-diet-api/target/classes/20171106_menu.xls";
+    private final String FILE_NAME = "20171106_menu.xls";
     private Map<String, Map<DietSubType, Diet>> dietMap;
 
     @PostConstruct
     public void init() {
-        dietMap = makeDietMap(FILE_PATH);
+        dietMap = makeDietMap(FILE_NAME);
 
     }
 
@@ -70,8 +66,8 @@ public class ExcelService {
 
     }
 
-    private Map<String, Map<DietSubType, Diet>> makeDietMap(String filePath) {
-        Workbook workBook = getWorkBook(filePath);
+    private Map<String, Map<DietSubType, Diet>> makeDietMap(String fileName) {
+        Workbook workBook = getWorkBook(fileName);
         Sheet sheet = workBook.getSheetAt(0);
 
         int rowCount = sheet.getPhysicalNumberOfRows();
@@ -154,21 +150,13 @@ public class ExcelService {
     }
 
 
-    private Workbook getWorkBook(String filePath) {
-        FileInputStream inputStream = null;
-        try {
-            inputStream = new FileInputStream(filePath);
-
-        } catch (FileNotFoundException e) {
-            String currentPath = System.getProperty("user.dir");
-            LOGGER.error("### Current path : " + currentPath);
-            throw new RuntimeException(e.getMessage(), e);
-
-        }
+    private Workbook getWorkBook(String fileName) {
+        ClassLoader classloader = Thread.currentThread().getContextClassLoader();
+        InputStream inputStream = classloader.getResourceAsStream(fileName);
 
         Workbook workBook = null;
 
-        if(filePath.toUpperCase().endsWith(".XLS")) {
+        if(fileName.toUpperCase().endsWith(".XLS")) {
             try {
                 workBook = new HSSFWorkbook(inputStream);
 
