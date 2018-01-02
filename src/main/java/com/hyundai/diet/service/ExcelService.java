@@ -22,7 +22,7 @@ import java.util.*;
 @Service
 public class ExcelService {
     private static final Logger LOGGER = LoggerFactory.getLogger(ExcelService.class);
-    private final String FILE_PATH = "src/main/resources/20171106_menu.xls";
+    private final String FILE_PATH = "home/kjs92980/hyundai-diet-api/src/main/resources/20171106_menu.xls";
     private Map<String, Map<DietSubType, Diet>> dietMap;
 
     @PostConstruct
