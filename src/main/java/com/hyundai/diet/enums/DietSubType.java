@@ -8,7 +8,8 @@ public enum DietSubType {
     BREAKFAST_RAMEN("라면"),
     BREAKFAST_BREAD("빵"),
     COURSE_A("A코스"),
-    COURSE_B("B코스");
+    COURSE_B("B코스"),
+    DESSERT("후식");
 
     private String desc;
 

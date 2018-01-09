@@ -9,6 +9,7 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
@@ -18,7 +19,7 @@ import java.util.*;
 
 @Service
 public class ExcelService {
-    private final String FILE_NAME = "20171106_menu.xls";
+    private final String FILE_NAME = "20180108_diet.xlsx";
     private Map<String, Map<DietSubType, Diet>> dietMap;
 
     @PostConstruct
@@ -159,6 +160,14 @@ public class ExcelService {
         if(fileName.toUpperCase().endsWith(".XLS")) {
             try {
                 workBook = new HSSFWorkbook(inputStream);
+
+            } catch (IOException e) {
+                throw new RuntimeException(e.getMessage(), e);
+
+            }
+        } else if (fileName.toUpperCase().endsWith(".XLSX")) {
+            try {
+                workBook = new XSSFWorkbook(inputStream);
 
             } catch (IOException e) {
                 throw new RuntimeException(e.getMessage(), e);
