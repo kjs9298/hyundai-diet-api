@@ -19,7 +19,7 @@ import java.util.*;
 
 @Service
 public class ExcelService {
-    private final String FILE_NAME = "20180108_diet.xlsx";
+    private final String FILE_NAME = "20180115_diet.xlsx";
     private Map<String, Map<DietSubType, Diet>> dietMap;
 
     @PostConstruct
@@ -32,7 +32,7 @@ public class ExcelService {
         String key = makeKeyOnCurrentDateTime(dietType);
 
         if(dietMap.containsKey(key) == false) {
-            return "저장되지 않은 식단입니다.";
+            return "주말에는 지원하지 않아요 ~ T.T";
 
         }
 
@@ -50,13 +50,13 @@ public class ExcelService {
         String lastComment;
         switch (dietType) {
             case BREAKFAST:
-                lastComment = "오늘 하루도 맛있는 아침식사로 시작해봅시다 >_<!";
+                lastComment = "오늘도 빵 드실건가요 >_<♥";
                 break;
             case LUNCH:
-                lastComment = "점심 두둑히 먹고 오후도 힘내봅시당 ^0^!";
+                lastComment = "A코스 B코스 골라봅시당 ^0^!";
                 break;
             case DINNER:
-                lastComment = "오늘 하루도 고생하셨습니다 항상 응원합니닷 >0<!";
+                lastComment = "오늘 하루도 수고했어욤 (노예s...) 항상 응원합니닷 >0<!";
                 break;
             default:
                 lastComment = "오늘 하루도 좋은 하루 되세욧 !";
@@ -108,7 +108,7 @@ public class ExcelService {
 
                     }
 
-                    if(StringUtils.isNotBlank(row.getCell(colNum).getStringCellValue())) {
+                    if(Objects.isNull(row.getCell(colNum)) == false && StringUtils.isNotBlank(row.getCell(colNum).getStringCellValue())) {
                         Diet diet = new Diet(row.getCell(colNum).getStringCellValue());
                         subTypeDietMap.put(dietSubType, diet);
 
@@ -144,7 +144,7 @@ public class ExcelService {
     }
 
     private String makeKeyOnCurrentDateTime(DietType dietType) {
-        String prefix = DateTimeUtils.getPrefixKeyByCurrentDateTime();
+        String prefix = DateTimeUtils.getPrefixKeyByPreviousDateTime();
 
         return prefix + "_" + dietType.name();
 

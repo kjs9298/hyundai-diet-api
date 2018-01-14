@@ -24,4 +24,15 @@ public class DateTimeUtils {
         return FORMATTER_YYYY_MM_DD.print(dateTime);
 
     }
+
+    public static String getPrefixKeyByPreviousDateTime() {
+        DateTime dateTime = new DateTime()
+                .withZone(DateTimeZone.forID("Asia/Seoul"));
+
+        if(dateTime.getHourOfDay() >= 19 && dateTime.getHourOfDay() <= 23 ) {
+            dateTime = dateTime.plusDays(1);
+        }
+
+        return FORMATTER_YYYY_MM_DD.print(dateTime);
+    }
 }
