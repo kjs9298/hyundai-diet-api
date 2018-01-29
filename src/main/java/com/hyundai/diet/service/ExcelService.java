@@ -19,7 +19,8 @@ import java.util.*;
 
 @Service
 public class ExcelService {
-    private final String FILE_NAME = "20180115_diet.xlsx";
+    private final String FILE_NAME = "20180129_diet.xlsx";
+
     private Map<String, Map<DietSubType, Diet>> dietMap;
 
     @PostConstruct
@@ -50,13 +51,13 @@ public class ExcelService {
         String lastComment;
         switch (dietType) {
             case BREAKFAST:
-                lastComment = "오늘도 빵 드실건가요 >_<♥";
+                lastComment = "아침밥은 많이 머거야징 >_<";
                 break;
             case LUNCH:
-                lastComment = "A코스 B코스 골라봅시당 ^0^!";
+                lastComment = "점심도 많이 먹어야징 ^0^!";
                 break;
             case DINNER:
-                lastComment = "오늘 하루도 수고했어욤 (노예s...) 항상 응원합니닷 >0<!";
+                lastComment = "밥 묵고 재미난 딥러닝 합시당 >0<";
                 break;
             default:
                 lastComment = "오늘 하루도 좋은 하루 되세욧 !";
