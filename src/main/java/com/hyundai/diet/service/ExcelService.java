@@ -19,7 +19,7 @@ import java.util.*;
 
 @Service
 public class ExcelService {
-    private final String FILE_NAME = "20180205_diet.xlsx";
+    private final String FILE_NAME = "20180219_diet.xlsx";
 
     private Map<String, Map<DietSubType, Diet>> dietMap;
 
@@ -51,13 +51,13 @@ public class ExcelService {
         String lastComment;
         switch (dietType) {
             case BREAKFAST:
-                lastComment = "Work hard, be kind, and amazing things will happen.";
+                lastComment = "Setting goals is the first step in turning the invisible into the visible.";
                 break;
             case LUNCH:
-                lastComment = "You've got to find what you love.";
+                lastComment = "If you do not change direction, you may end up where you are heading.";
                 break;
             case DINNER:
-                lastComment = "You seem the same as always, and being you, hate every minute of it. Don't! Learn to say Fuck You to the world once in a while";
+                lastComment = "Wheresoever you go, go with all your heart.";
                 break;
             default:
                 lastComment = "오늘 하루도 좋은 하루 되세욧 !";
