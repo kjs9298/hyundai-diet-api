@@ -19,7 +19,7 @@ import java.util.*;
 
 @Service
 public class ExcelService {
-    private final String FILE_NAME = "20180312_diet.xlsx";
+    private final String FILE_NAME = "20180319_diet.xlsx";
 
     private Map<String, Map<DietSubType, Diet>> dietMap;
 
@@ -33,7 +33,7 @@ public class ExcelService {
         String key = makeKeyOnCurrentDateTime(dietType);
 
         if(dietMap.containsKey(key) == false) {
-            return "주말에는 지원하지 않아요 ~ T.T";
+            return "I don't support on weekend.";
 
         }
 
@@ -51,20 +51,20 @@ public class ExcelService {
         String lastComment;
         switch (dietType) {
             case BREAKFAST:
-                lastComment = "Your feet smell.";
+                lastComment = "I got hear five minutes ago, And had last ramen.";
                 break;
             case LUNCH:
-                lastComment = "Your hair smells.";
+                lastComment = "I had an informant on the inside.";
                 break;
             case DINNER:
-                lastComment = "You have bad body odor.";
+                lastComment = "It's time to come home. I'm not sure if i can.";
                 break;
             default:
                 lastComment = "오늘 하루도 좋은 하루 되세욧 !";
                 break;
         }
 
-        return builder.append(lastComment).toString();
+        return builder.append(lastComment).toString().replace("\n\r", "\n");
 
     }
 
