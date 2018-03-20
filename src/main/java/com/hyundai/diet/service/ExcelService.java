@@ -51,7 +51,7 @@ public class ExcelService {
         String lastComment;
         switch (dietType) {
             case BREAKFAST:
-                lastComment = "I got hear five minutes ago, And had last ramen.";
+                lastComment = "I got here five minutes ago, And had last ramen.";
                 break;
             case LUNCH:
                 lastComment = "I had an informant on the inside.";
