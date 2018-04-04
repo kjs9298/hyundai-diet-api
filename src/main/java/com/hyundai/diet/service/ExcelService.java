@@ -19,7 +19,7 @@ import java.util.*;
 
 @Service
 public class ExcelService {
-    private final String FILE_NAME = "20180326_diet.xlsx";
+    private final String FILE_NAME = "20180402_diet.xlsx";
 
     private Map<String, Map<DietSubType, Diet>> dietMap;
 
@@ -43,7 +43,7 @@ public class ExcelService {
 
         // TODO : Fix the calories
         subTypeDietMap.forEach((subType, diet) -> {
-            builder.append("[" + subType.getDesc() + "]\n");
+            builder.append("[" + subType.getDesc() + "] " + diet.getCalorie() + "kcal\n");
             builder.append(diet.getDietText());
             builder.append("\n");
 
@@ -52,13 +52,13 @@ public class ExcelService {
         String lastComment;
         switch (dietType) {
             case BREAKFAST:
-                lastComment = "Happy 3rd anniversary with you !";
+                lastComment = "Let the wasting of time begin.";
                 break;
             case LUNCH:
-                lastComment = "Thanks for your love.";
+                lastComment = "There's a bunch of movie options.";
                 break;
             case DINNER:
-                lastComment = "I love to drive on your IONIQ. Let's go with this weekend !";
+                lastComment = "I mean, I was constipated for three days.";
                 break;
             default:
                 lastComment = "오늘 하루도 좋은 하루 되세욧 !";
